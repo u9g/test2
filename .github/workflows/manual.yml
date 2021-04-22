@@ -3,7 +3,7 @@ name: Manual workflow
 on:
   workflow_dispatch:
     inputs:
-      version:
+      minecraft-version:
         description: 'Version of minecraft to dump data from'
         default: '1.16.5'
         required: true
@@ -35,7 +35,7 @@ jobs:
       - name: Run npm
         run: |
             cd code
-            npm run start -- ${{ github.event.inputs.minecraftVersion }}
+            npm run start -- ${{ github.event.inputs.minecraft-version }}
       - name: cleanup node modules
         run: rm -Rf code/node_modules/
       - name: ls
