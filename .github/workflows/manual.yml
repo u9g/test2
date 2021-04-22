@@ -25,7 +25,7 @@ jobs:
         run: |
             wget https://services.gradle.org/distributions/gradle-7.0-bin.zip
             unzip gradle-7.0-bin.zip
-            mv gradle-7.0/bin/gradle gradlew
+            mv gradle-7.0/bin/gradle code/gradlew
             rm -Rf gradle-7.0
       - name: clone shapes tool
         run: git clone https://github.com/PrismarineJS/McDataExtracting code
