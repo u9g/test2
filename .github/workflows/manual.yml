@@ -22,7 +22,7 @@ jobs:
         with:
           java-version: 1.8
       - name: clone shapes tool
-        run: git clone https://github.com/PrismarineJS/McDataExtracting code
+        run: git clone https://github.com/u9g/McDataExtracting code
       - name: get gradlew
         run: |
             wget https://services.gradle.org/distributions/gradle-7.0-bin.zip
