@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-    - uses: actions/checkout@v2
+    - run: git clone https://github.com/u9g/McDataExtracting code
     - uses: actions/setup-node@v2
       with:
         node-version: '15'
@@ -23,13 +23,13 @@ jobs:
       with:
         java-version: 1.8
     - name: Grant execute permission for gradlew
-      run: chmod +x ./gradlew
+      run: chmod +x ./code/gradlew
     - name: Run npm
-      run: npm run start -- ${{ github.event.inputs.minecraftVersion }}
+      run: cd code && npm run start -- ${{ github.event.inputs.minecraftVersion }}
     - name: rm node_modules
-      run: rm -Rf node_modules
+      run: rm -Rf code/node_modules
     - name: make dir for json
-      run: mkdir json && mv blockCollisionShapes.json json/blockCollisionShapes.json
+      run: mkdir json && mv code/blockCollisionShapes.json json/blockCollisionShapes.json
     - name: save to artifact
       uses: actions/upload-artifact@v2
       with:
