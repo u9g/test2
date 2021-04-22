@@ -21,6 +21,12 @@ jobs:
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8
+      - name: get gradlew
+        run: |
+            wget https://services.gradle.org/distributions/gradle-7.0-bin.zip
+            unzip gradle-7.0-bin.zip
+            mv gradle-7.0/bin/gradle gradlew
+            rm -Rf gradle-7.0
       - name: clone shapes tool
         run: git clone https://github.com/PrismarineJS/McDataExtracting code
       - name: ls
