@@ -12,14 +12,19 @@ jobs:
     dump-shapes:
       runs-on: ubuntu-latest
       steps:
-      - run: git clone https://github.com/PrismarineJS/McDataExtracting code
-      - uses: actions/setup-node@v2
+      
+      - name: setup node
+        uses: actions/setup-node@v2
         with:
           node-version: '15'
-      - name: Set up JDK 1.8
+      - name: setup java
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8
+      - name: clone shapes tool
+        run: git clone https://github.com/PrismarineJS/McDataExtracting code
+      - name: ls
+        run: ls -R
       - name: Grant execute permission for gradlew
         run: chmod +x ./code/gradlew
       - name: Run npm
@@ -34,6 +39,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: data
-          path: code/json
+          path: code/json/
       - name: cleanup code
         run: rm -Rf code/
