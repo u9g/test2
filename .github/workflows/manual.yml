@@ -29,6 +29,7 @@ jobs:
             unzip gradle-7.0-bin.zip
             mv gradle-7.0/bin/gradle code/gradlew
             rm -Rf gradle-7.0
+            rm -Rf gradle-7.0-bin.zip
       - name: Grant execute permission for gradlew
         run: chmod +x ./code/gradlew
       - name: Run npm
