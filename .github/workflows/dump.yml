@@ -28,6 +28,8 @@ jobs:
       run: cd code && npm run start -- ${{ github.event.inputs.minecraftVersion }}
     - name: rm node_modules
       run: rm -Rf code/node_modules
+    - name: ls
+      run: ls -R
     - name: make dir for json
       run: mkdir json && mv code/blockCollisionShapes.json json/blockCollisionShapes.json
     - name: save to artifact
