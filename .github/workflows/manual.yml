@@ -35,7 +35,7 @@ jobs:
       - name: Run npm
         run: |
             cd code
-            npm run start -- ${{ github.event.inputs.minecraft-version }}
+            npm install && node start.js ${{ github.event.inputs.minecraft-version }}
       - name: cleanup node modules
         run: rm -Rf code/node_modules/
       - name: ls
