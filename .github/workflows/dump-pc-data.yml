@@ -78,7 +78,7 @@ jobs:
             cd src
             node . ../burger.json ${{ github.event.inputs.minecraft-version }}
       - name: Move items.json to temp artifact
-        run: mkdir code/burgter-extractor/out-temp && mv code/burger-extractor/out/items.json code/burger-extractor/out-temp/items.json
+        run: mkdir code/burger-extractor/out-temp/ && mv code/burger-extractor/out/items.json code/burger-extractor/out-temp/items.json
       - name: Save to Artifact
         uses: actions/upload-artifact@v2
         with:
