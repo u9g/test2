@@ -83,7 +83,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: data
-          path: code/burger-extractor/src/out/
+          path: code/burger-extractor/out/
           
     make-pr:
       runs-on: ubuntu-latest
