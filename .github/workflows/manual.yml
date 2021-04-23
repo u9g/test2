@@ -37,7 +37,7 @@ jobs:
       - name: Cleanup Node Modules
         run: rm -Rf code/node_modules/
       - name: run gradle
-        run: gradle run
+        run: cd code && gradle run
       - name: Make dir for json files
         run: mkdir code/json/ && mv code/blockCollisionShapes.json code/json/blockCollisionShapes.json
       - name: Save to Artifact
