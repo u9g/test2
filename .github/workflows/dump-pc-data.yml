@@ -125,10 +125,10 @@ jobs:
           node-version: '15'
       - name: Clone Repos
         run: | # git clone https://github.com/PrismarineJS/minecraft-jar-extractor
-            mkdir code && cd code
+            mkdir out && mkdir code && cd code
             git clone https://github.com/u9g/minecraft-jar-extractor/
+            cd minecraft-jar-extractor
             git switch -f patch-1
-            mkdir out
       - name: Make language.json
         run: |
             cd code/minecraft-jar-extractor
