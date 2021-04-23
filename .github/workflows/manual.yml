@@ -47,3 +47,17 @@ jobs:
           path: code/json/
       - name: Cleanup Code
         run: rm -Rf code/
+    make-pr:
+      runs-on: ubuntu-latest
+      steps:
+      
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.9
+        with:
+          name: data
+          path: data/pc/${{ github.event.inputs.minecraft-version }}/
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+      
