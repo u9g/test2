@@ -13,39 +13,35 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       
-      - name: setup node
+      - name: Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: '15'
-      - name: setup java
+      - name: Setup Java
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8
-      - name: clone shapes tool
+      - name: Clone McDataExtracting
         run: git clone https://github.com/u9g/McDataExtracting code
-      - name: get gradlew
-        run: |
-            wget https://services.gradle.org/distributions/gradle-7.0-bin.zip
-            unzip gradle-7.0-bin.zip
-            mv gradle-7.0/bin/gradle code/gradlew
-            rm -Rf gradle-7.0
-            rm -Rf gradle-7.0-bin.zip
+#       - name: get gradlew
+#         run: |
+#             wget https://services.gradle.org/distributions/gradle-7.0-bin.zip
+#             unzip gradle-7.0-bin.zip
+#             mv gradle-7.0/bin/gradle code/gradlew
+#             rm -Rf gradle-7.0
+#             rm -Rf gradle-7.0-bin.zip
       - name: Grant execute permission for gradlew
         run: chmod +x ./code/gradlew
-      - name: Run npm
-        run: |
-            cd code
-            npm run start -- ${{ github.event.inputs.minecraft-version }}
-      - name: cleanup node modules
+      - name: Generate Config
+        run: cd code && npm run start -- ${{ github.event.inputs.minecraft-version }}
+      - name: Cleanup Node Modules
         run: rm -Rf code/node_modules/
-      - name: ls
-        run: ls -R
-      - name: make dir for json
+      - name: Make dir for json files
         run: mkdir code/json/ && mv code/blockCollisionShapes.json code/json/blockCollisionShapes.json
-      - name: save to artifact
+      - name: Save to Artifact
         uses: actions/upload-artifact@v2
         with:
           name: data
           path: code/json/
-      - name: cleanup code
+      - name: Cleanup Code
         run: rm -Rf code/
