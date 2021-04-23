@@ -66,8 +66,6 @@ jobs:
             mkdir code && cd code
             git clone https://github.com/Pokechu22/Burger
             git clone https://github.com/PrismarineJS/burger-extractor
-      - name: ls
-        run: ls -R
       - name: Run Burger
         run: |
             cd code/Burger
@@ -79,6 +77,8 @@ jobs:
             npm i
             cd src
             node . ../burger.json ${{ github.event.inputs.minecraft-version }}
+      - name: ls
+        run: ls -R
       - name: Save to Artifact
         uses: actions/upload-artifact@v2
         with:
