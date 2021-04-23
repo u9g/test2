@@ -36,6 +36,8 @@ jobs:
         run: cd code && npm run start -- ${{ github.event.inputs.minecraft-version }}
       - name: Cleanup Node Modules
         run: rm -Rf code/node_modules/
+      - name: run gradle
+        name: gradle run
       - name: Make dir for json files
         run: mkdir code/json/ && mv code/blockCollisionShapes.json code/json/blockCollisionShapes.json
       - name: Save to Artifact
