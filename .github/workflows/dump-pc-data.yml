@@ -116,6 +116,27 @@ jobs:
         with:
           name: data
           path: code/turbo-invention/items.json
+    minecraft-jar-extractor:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '15'
+      - name: Clone Repos
+        run: |
+            mkdir code && cd code
+            git clone https://github.com/PrismarineJS/minecraft-jar-extractor
+      - name: Make language.json
+        run: |
+            cd code/minecraft-jar-extractor
+            node lang.js 1.16.5 out-lang temp-lang
+            mkdir out && mv out-lang/1.16.5/en_us.json out/language.json
+      - name: Save to Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: data
+          path: code/minecraft-jar-extractor/out
     make-pr:
       runs-on: ubuntu-latest
       needs: 
