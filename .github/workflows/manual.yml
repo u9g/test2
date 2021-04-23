@@ -49,6 +49,7 @@ jobs:
         run: rm -Rf code/
     make-pr:
       runs-on: ubuntu-latest
+      needs: dump-shapes
       steps:
       
       - name: Checkout
