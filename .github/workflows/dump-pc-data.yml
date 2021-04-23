@@ -77,6 +77,7 @@ jobs:
         run: |
             cd code/burger-extractor
             npm i
+            cd src
             node . ../burger.json ${{ github.event.inputs.minecraft-version }}
       - name: Save to Artifact
         uses: actions/upload-artifact@v2
