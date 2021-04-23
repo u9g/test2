@@ -130,6 +130,7 @@ jobs:
       - name: Make language.json
         run: |
             cd code/minecraft-jar-extractor
+            npm i
             node lang.js 1.16.5 out-lang temp-lang
             mkdir out && mv out-lang/1.16.5/en_us.json out/language.json
       - name: Save to Artifact
@@ -142,6 +143,7 @@ jobs:
       needs: 
         - dump-shapes
         - turbo-invention
+        - minecraft-jar-extractor
       steps:
       - name: Checkout
         uses: actions/checkout@v2
