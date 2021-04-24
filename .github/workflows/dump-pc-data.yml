@@ -165,6 +165,7 @@ jobs:
       - name: Run minecraft-jar-extractor
         run: |
             cd code/minecraft-jar-extractor
+            npm i
             node extract_datafolder.js ${{ github.event.inputs.minecraft-version }} out temp
             cd in_place
             node patch_states.js ${{ github.event.inputs.minecraft-version }} blocks.json
