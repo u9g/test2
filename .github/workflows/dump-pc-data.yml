@@ -157,7 +157,6 @@ jobs:
             git clone https://github.com/u9g/minecraft-jar-extractor/
             cd minecraft-jar-extractor
             git switch -f codespace-ca5d
-            mkdir code/minecraft-jar-extractor/in_place
       - name: Download a Build Artifact
         uses: actions/download-artifact@v2.0.9
         with:
