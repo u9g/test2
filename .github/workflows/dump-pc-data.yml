@@ -159,20 +159,19 @@ jobs:
         uses: actions/download-artifact@v2.0.9
         with:
           name: data
-          path: code/minecraft-jar-extractor/in_place/
+          path: code/minecraft-jar-extractor/
       - name: Run minecraft-jar-extractor
         run: |
             cd code/minecraft-jar-extractor
             npm i
             node extract_datafolder.js ${{ github.event.inputs.minecraft-version }} out temp
-            cd in_place
             node patch_states.js ${{ github.event.inputs.minecraft-version }} blocks.json
             node extract_block_lootTables.js . ../out/${{ github.event.inputs.minecraft-version }}/
       - name: Save to Artifact
         uses: actions/upload-artifact@v2
         with:
           name: data
-          path: code/minecraft-jar-extractor/in_place/blocks.json
+          path: code/minecraft-jar-extractor/blocks.json
     make-pr:
       runs-on: ubuntu-latest
       needs: 
