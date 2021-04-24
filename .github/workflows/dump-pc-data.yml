@@ -77,18 +77,12 @@ jobs:
             npm i
             cd src
             node . ../burger.json ${{ github.event.inputs.minecraft-version }}
-#       - name: Move items.json to temp artifact
-#         run: mkdir code/burger-extractor/out-temp/ && mv code/burger-extractor/out/items.json code/burger-extractor/out-temp/items.json
       - name: Save to Artifact
         uses: actions/upload-artifact@v2
         with:
           name: data
           path: code/burger-extractor/out/
-#       - name: Save to Artifact
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: temp
-#           path: code/burger-extractor/out-temp/
+          
     turbo-invention: # adds data to items.json from burger
       runs-on: ubuntu-latest
       needs:
