@@ -161,7 +161,7 @@ jobs:
         uses: actions/download-artifact@v2.0.9
         with:
           name: data
-          path: code/minecraft-jar-extractor/
+          path: code/minecraft-jar-extractor/in_place/
       - name: Run minecraft-jar-extractor
         run: |
             cd code/minecraft-jar-extractor
